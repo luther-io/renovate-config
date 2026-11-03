@@ -7,6 +7,7 @@
     "helpers:pinGitHubActionDigests"
   ],
   "schedule": ["before 6am on monday"],
+  "platformCommit": "enabled",
   "osvVulnerabilityAlerts": true,
   "vulnerabilityAlerts": {
     "enabled": true,
