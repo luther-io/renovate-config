@@ -23,6 +23,7 @@ Renovate resolves `github>vidluther/renovate-config` to `default.json` on the de
 - Major updates require approval from the dependency dashboard before a PR is opened
 - GitHub Actions pinned to commit digests via `helpers:pinGitHubActionDigests`; reusable workflow references stay on tags
 - Vulnerability PRs from two sources: OSV (`osvVulnerabilityAlerts`, direct dependencies) and GitHub's Dependabot alerts (`vulnerabilityAlerts`, includes transitive), the latter labelled `security`
+- `platformCommit: "enabled"` — commits are created through GitHub's API, so the GitHub App's commits are signed. Required for repositories with a *require signed commits* rule
 
 ## Per-repository overrides
 
