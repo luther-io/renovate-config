@@ -73,6 +73,10 @@ These are repository settings; extending this preset does not change them automa
 - `security:minimumReleaseAgeNpm` delays new npm releases by 3 days.
 - `:configMigration` opens a PR when a repository's Renovate config uses deprecated options.
 
+## Development
+
+The `Validate` workflow runs `renovate-config-validator --strict` on `default.json` and this repository's own `renovate.json` for every push to `main` and every PR. This repository extends its own preset, so its workflow actions are pinned and updated like any other repository's.
+
 ## Per-repository overrides
 
 Extend the preset and add rules. Later matching rules override earlier values; for example, allow one package's major-update PRs without dashboard approval:
