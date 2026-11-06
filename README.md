@@ -21,12 +21,16 @@ The app needs **Workflows: read and write** permission to update GitHub Actions 
 
 | Update type | Behavior |
 | --- | --- |
-| Minor and patch | Grouped under **all non-major dependencies**. The group can span package managers; it is not one PR per manager. |
+| Minor and patch (production dependencies) | One PR per package, so a failure points at a single dependency. Packages that release together (for example `@babel/*`) are still grouped by `config:recommended`. |
+| Minor and patch (npm devDependencies) | Grouped under **dev dependencies (non-major)**. |
+| Minor and patch (GitHub Actions) | Grouped under **GitHub Actions (non-major)**. |
 | Major | Listed in the Dependency Dashboard issue. Check the approval box before Renovate creates the branch/PR. |
 | New npm release | Not proposed until it is 3 days old. |
 | Security fix | Raised when a fix is available. Vulnerability-alert PRs bypass the normal schedule, release-age delay, and dashboard approval. |
 
 Routine update branches are created **Monday between midnight and 6 a.m. IST** (`Asia/Kolkata`), unless a repository overrides the timezone or schedule. This is an allowed window, not a job trigger: Renovate must run during it. Existing branches can be updated outside the window.
+
+Renovate's default limits (10 open PRs, 2 new PRs per hour) keep an outdated repository from opening dozens of PRs at once; the rest wait in the Dependency Dashboard and are created as PRs merge. A repository catching up on a large backlog can lower this temporarily with `"prConcurrentLimit": 3`.
 
 This preset does **not** enable automerge. Dashboard approval allows Renovate to create an update PR; it does not merge it.
 

@@ -17,9 +17,16 @@
   },
   "packageRules": [
     {
-      "description": "Group all minor and patch updates into one PR",
+      "description": "Low-risk: group devDependency minor/patch updates",
+      "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "all non-major dependencies"
+      "groupName": "dev dependencies (non-major)"
+    },
+    {
+      "description": "Low-risk: group GitHub Actions minor/patch updates",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "GitHub Actions (non-major)"
     },
     {
       "description": "Major updates wait for approval in the dependency dashboard",
