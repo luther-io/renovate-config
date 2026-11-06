@@ -3,7 +3,6 @@
   "description": "Shared Renovate preset for vidluther's repositories",
   "extends": [
     "config:recommended",
-    ":dependencyDashboard",
     "helpers:pinGitHubActionDigests"
   ],
   "schedule": ["before 6am on monday"],
@@ -15,7 +14,7 @@
   },
   "packageRules": [
     {
-      "description": "One PR per manager for minor and patch updates",
+      "description": "Group all minor and patch updates into one PR",
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "all non-major dependencies"
     },
