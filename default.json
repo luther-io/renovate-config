@@ -22,11 +22,6 @@
       "description": "Major updates wait for approval in the dependency dashboard",
       "matchUpdateTypes": ["major"],
       "dependencyDashboardApproval": true
-    },
-    {
-      "description": "Reusable workflow refs track tags, not commit digests",
-      "matchDepTypes": ["workflow"],
-      "pinDigests": false
     }
   ]
 }

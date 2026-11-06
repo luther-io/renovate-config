@@ -48,7 +48,7 @@ A tag can move upstream; a pinned SHA keeps the action code unchanged until you 
 
 PRs and dashboard issue updates use **GitHub's normal notifications**, so notification delivery depends on your GitHub subscription settings.
 
-Reusable workflow calls, such as `owner/repo/.github/workflows/build.yml@v1`, are excluded from automatic SHA pinning. Renovate can still propose version-tag updates for them.
+Reusable workflow calls, such as `owner/repo/.github/workflows/build.yml@v1`, are pinned the same way. Local workflows (`uses: ./.github/workflows/build.yml`) have no ref and are left alone.
 
 ## Security updates and Dependabot
 
