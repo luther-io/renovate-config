@@ -9,6 +9,7 @@
   ],
   "timezone": "Asia/Kolkata",
   "schedule": ["before 6am on monday"],
+  "minimumReleaseAge": "3 days",
   "automergeSchedule": ["after 10am and before 5pm every weekday"],
   "platformAutomerge": false,
   "platformCommit": "enabled",
