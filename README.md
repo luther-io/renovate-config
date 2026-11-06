@@ -23,10 +23,10 @@ The app needs **Workflows: read and write** permission to update GitHub Actions 
 | --- | --- |
 | Minor and patch | Grouped under **all non-major dependencies**. The group can span package managers; it is not one PR per manager. |
 | Major | Listed in the Dependency Dashboard issue. Check the approval box before Renovate creates the branch/PR. |
-| Action digest (SHA) only | Can get separate PRs; the minor/patch grouping rule does not cover digest-only updates. |
-| Security fix | Raised when a fix is available. Vulnerability-alert PRs bypass the normal schedule and dashboard approval. |
+| New npm release | Not proposed until it is 3 days old. |
+| Security fix | Raised when a fix is available. Vulnerability-alert PRs bypass the normal schedule, release-age delay, and dashboard approval. |
 
-Routine update branches are created **Monday between midnight and 6 a.m. UTC**, unless a repository overrides the timezone or schedule. This is an allowed window, not a job trigger: Renovate must run during it. Existing branches can be updated outside the window.
+Routine update branches are created **Monday between midnight and 6 a.m. IST** (`Asia/Kolkata`), unless a repository overrides the timezone or schedule. This is an allowed window, not a job trigger: Renovate must run during it. Existing branches can be updated outside the window.
 
 This preset does **not** enable automerge. Dashboard approval allows Renovate to create an update PR; it does not merge it.
 
@@ -34,17 +34,17 @@ This preset does **not** enable automerge. Dashboard approval allows Renovate to
 
 **Renovate proposes GitHub Actions updates even when Dependabot update PRs are disabled.** Pinning fixes the code your workflow runs; it does not stop Renovate from checking for newer versions.
 
-The `helpers:pinGitHubActionDigests` preset replaces action tags with exact commit SHAs, preserving the version in a comment:
+The `helpers:pinGitHubActionDigestsToSemver` preset replaces action tags with exact commit SHAs and records the full version in a comment:
 
 ```yaml
 # Before pinning
 - uses: actions/checkout@v4
 
 # After pinning
-- uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+- uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 ```
 
-A tag can move upstream; a pinned SHA keeps the action code unchanged until you merge an update. Renovate tracks the version comment and proposes SHA/version updates through PRs using the policy above. Major updates appear in the Dependency Dashboard first.
+A tag can move upstream; a pinned SHA keeps the action code unchanged until you merge an update. Because the comment holds a full version, action updates are classified as patch, minor, or major and follow the policy above. Major updates appear in the Dependency Dashboard first.
 
 PRs and dashboard issue updates use **GitHub's normal notifications**, so notification delivery depends on your GitHub subscription settings.
 
@@ -70,6 +70,8 @@ These are repository settings; extending this preset does not change them automa
 
 - `config:recommended` provides Renovate's recommended defaults and the Dependency Dashboard issue.
 - `platformCommit: "enabled"` creates commits through GitHub's API so the GitHub App's commits are signed, supporting repositories that require signed commits.
+- `security:minimumReleaseAgeNpm` delays new npm releases by 3 days.
+- `:configMigration` opens a PR when a repository's Renovate config uses deprecated options.
 
 ## Per-repository overrides
 

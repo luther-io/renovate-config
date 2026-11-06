@@ -3,8 +3,11 @@
   "description": "Shared Renovate preset for vidluther's repositories",
   "extends": [
     "config:recommended",
-    "helpers:pinGitHubActionDigests"
+    "helpers:pinGitHubActionDigestsToSemver",
+    "security:minimumReleaseAgeNpm",
+    ":configMigration"
   ],
+  "timezone": "Asia/Kolkata",
   "schedule": ["before 6am on monday"],
   "platformCommit": "enabled",
   "osvVulnerabilityAlerts": true,
