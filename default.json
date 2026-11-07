@@ -21,6 +21,11 @@
   },
   "packageRules": [
     {
+      "description": "Stay on TypeScript < 7 (the Go-based compiler breaks too much tooling)",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<7"
+    },
+    {
       "description": "Automerge patch updates once CI passes",
       "matchUpdateTypes": ["patch"],
       "automerge": true

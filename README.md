@@ -30,6 +30,10 @@ The app needs **Workflows: read and write** permission to update GitHub Actions 
 
 Packages that release together (for example `@babel/*`) are grouped by `config:recommended`.
 
+### Version caps
+
+- **TypeScript stays below 7** (`allowedVersions: "<7"`). TypeScript 7 is the Go-based compiler and breaks too much tooling, so Renovate never proposes it. Versions 6.x are still offered as major updates. To allow 7 in one repository, override with `{ "matchPackageNames": ["typescript"], "allowedVersions": "*" }`.
+
 ### 3-day release age
 
 Renovate does not propose a version until it has been released for **3 days**, in every ecosystem (`minimumReleaseAge`). This gives malware scanners and maintainers time to catch and pull a compromised release. Security fixes skip the wait.
