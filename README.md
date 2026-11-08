@@ -9,11 +9,11 @@ Install the Renovate GitHub App for the repository, then add a `renovate.json`:
 ```json
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>vidluther/renovate-config"]
+  "extends": ["github>luther-io/renovate-config"]
 }
 ```
 
-Renovate resolves `github>vidluther/renovate-config` to `default.json` on the default branch.
+Renovate resolves `github>luther-io/renovate-config` to `default.json` on the default branch.
 
 The app needs **Workflows: read and write** permission to update GitHub Actions workflow files.
 
@@ -59,7 +59,7 @@ To turn automerge off in one repository:
 
 ```json
 {
-  "extends": ["github>vidluther/renovate-config"],
+  "extends": ["github>luther-io/renovate-config"],
   "packageRules": [{ "matchPackageNames": ["*"], "automerge": false }]
 }
 ```
@@ -117,7 +117,7 @@ Extend the preset and add rules. Later matching rules override earlier values; f
 
 ```json
 {
-  "extends": ["github>vidluther/renovate-config"],
+  "extends": ["github>luther-io/renovate-config"],
   "packageRules": [
     {
       "matchPackageNames": ["some-package"],

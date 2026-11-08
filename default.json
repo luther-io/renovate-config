@@ -1,6 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "description": "Shared Renovate preset for vidluther's repositories",
+  "description": "Shared Renovate preset for luther-io repositories",
   "extends": [
     "config:recommended",
     "helpers:pinGitHubActionDigestsToSemver",
